@@ -14,37 +14,43 @@ Deployment using AWS Elastic Beanstalk and AWS CodePipeline
 The goal is to show how to move from raw data to a production ready model using a reproducible and modular architecture that can be adapted to different datasets and use cases.
 
 ## Repository Structure
+
 ```
-data/
+├── .ebextensions/
+│   └── python.config
 │
-├── raw/
-├── processed/
-├── external/
+├── artifacts/
+│   ├── data.csv
+│   ├── model.pkl
+│   ├── preprocessor.pkl
+│   ├── test.csv
+│   └── train.csv
 │
-notebooks/
-│   ├── exploration.ipynb
-│   └── modeling.ipynb
+├── notebook/
+│   ├── catboost_info/
+│   ├── data/
+│   ├── 1. EDA STUDENT PERFORMANCE.ipynb
+│   └── 2. MODEL TRAINING.ipynb
 │
-src/
-│   ├── data_ingestion/
+├── src/
+│   ├── components/
 │   │   ├── __init__.py
-│   │   └── ingest.py
+│   │   ├── data_ingestion.py
+│   │   ├── data_transformation.py
+│   │   └── model_trainer.py
 │   │
-│   ├── preprocessing/
+│   ├── pipeline/
 │   │   ├── __init__.py
-│   │   └── transform.py
+│   │   ├── exception.py
+│   │   ├── logger.py
+│   │   └── utils.py
 │   │
-│   ├── features/
-│   │   ├── __init__.py
-│   │   └── engineer.py
-│   │
-│   ├── model/
-│   │   ├── __init__.py
-│   │   ├── train.py
-│   │   └── evaluate.py
+│   └── templates/
 │
-├── requirements.txt
-└── README.md
+├── app.py
+├── .gitignore
+├── README.md
+└── requirements.txt
 ```
 
 Prerequisites
